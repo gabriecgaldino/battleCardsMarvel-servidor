@@ -48,6 +48,7 @@ export default class CreateUserCardColletion1654800003415 implements MigrationIn
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
+        await queryRunner.dropTable('cardCollection')
     }
 
 }

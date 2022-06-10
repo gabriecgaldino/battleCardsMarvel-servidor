@@ -8,8 +8,8 @@ class Users {
     @Column()
     name: string
 
-    @Column('time with time zone')
-    age: Date
+    @Column()
+    age: string
 
     @Column()
     email: string

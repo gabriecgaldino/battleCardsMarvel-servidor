@@ -25,6 +25,7 @@ export default class CreateWallet1654799946072 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('wallets')
     }
 
 }

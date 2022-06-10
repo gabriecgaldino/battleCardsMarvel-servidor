@@ -7,8 +7,8 @@ import CreateUserService from "../services/CreateUserService";
 const usersRouter = Router()
 
 usersRouter.get('/', async (request, response)=> {
-    const usersRepository = await getCustomRepository(UsersRepository)
-    const users = usersRepository.find()
+    const usersRepository = getCustomRepository(UsersRepository)
+    const users = await usersRepository.find()
 
     return response.json(users)
 })
