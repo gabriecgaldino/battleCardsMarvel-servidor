@@ -1,8 +1,9 @@
+import 'reflect-metadata'
 import express from 'express'
-import './database'
 
+import './database/index'
+import router from './routes/index'
 
-import router from './routes/index.routes'
 const app = express()
 
 
@@ -11,9 +12,4 @@ app.use(router)
 
 
 
-
-
-
-
-
-app.listen(9000)
+app.listen(9000, ()=> { console.log('...')})

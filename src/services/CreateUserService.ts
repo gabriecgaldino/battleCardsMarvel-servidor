@@ -1,59 +1,49 @@
-import uuid from 'uuidv4'
-import datasource from "../database";
+import { getCustomRepository } from "typeorm";
+
 import User from "../models/User";
-import UserRepository from '../repositories/UserRespository';
+import UsersRepository from "../repositories/UsersRepository";
 
 interface Request {
     id: string
-
     name: string
-
     age: Date
-
     email: string
-
     id_Wallet: string
-
     id_cardCollection: string
-
     score: Number
-
     username: string
-
-    password: string  
+    password: string 
 }
-/*
 
-const CreateUserService = datasource.getRepository(UserRepository).extend({
-    async execute({
+class CreateUserService {
+    public async execute({
         id,
-        name, 
-        age, 
-        email, 
-        id_Wallet, 
-        id_cardCollection, 
-        score, 
-        username, 
-        password
+        name,
+        age,
+        email,
+        id_Wallet,
+        id_cardCollection,
+        score,
+        username,
+        password, 
     }: Request): Promise<User> {
-        const userRepository = UserRepository
-        const user = UserRepository.create({
-            id: 'uuid',
-            name, 
-            age, 
-            email, 
-            id_Wallet: 'uuid', 
-            id_cardCollection: 'uuid', 
-            score, 
-            username, 
-            password
-        })
+        const userRepository = getCustomRepository(UsersRepository)
 
-        await UserRepository.save(user)
+        const user = userRepository.create({
+            id,
+            name,
+            age,
+            email,
+            id_Wallet,
+            id_cardCollection,
+            score,
+            username,
+            password,
+        })
+        await userRepository.save(user)
+
         return user
-    }        
-})
+    }
+}
 
 export default CreateUserService
-
-*/
