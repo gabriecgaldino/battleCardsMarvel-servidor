@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, Double } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
-@Entity('wallet')
+@Entity('wallets')
 class Wallet {
     @PrimaryGeneratedColumn('uuid')
-    id_Wallet: string
+    id: string
 
     @Column()
     coins: Number

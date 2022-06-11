@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 @Entity('cardCollection')
 class CardCollection {
     @PrimaryGeneratedColumn('uuid')
-    id_cardCollection: string
+    id: string
 
     @PrimaryGeneratedColumn('uuid')
     id_card: string

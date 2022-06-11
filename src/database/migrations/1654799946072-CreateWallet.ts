@@ -8,11 +8,12 @@ export default class CreateWallet1654799946072 implements MigrationInterface {
                 name: 'wallets',
                 columns: [
                     {
-                        name: 'id_Wallet',
-                        type: 'varchar',
+                        name: 'id',
+                        type: 'uuid',
+                        generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()',
                         isPrimary: true,
                         isNullable: false,
-                        generationStrategy: 'uuid'
                     },
                     {
                         name: 'coins',

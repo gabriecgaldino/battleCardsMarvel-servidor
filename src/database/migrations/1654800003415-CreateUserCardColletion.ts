@@ -8,39 +8,42 @@ export default class CreateUserCardColletion1654800003415 implements MigrationIn
                 name: 'cardCollection',
                 columns: [
                     {
-                        name: 'id_cardCollection',
-                        type: 'varchar',
-                        isNullable: false,
-                        isPrimary: true,
+                        name: 'id',
+                        type: 'uuid',
                         generationStrategy: 'uuid',
+                        default: 'uuid_generate_v4()',
+                        isPrimary: true,
                     },
                     {
                         name: 'id_card',
-                        type: 'varchar',
-                        generationStrategy: 'uuid',
+                        type: 'uuid',
                         isUnique: true,
-                        isNullable: false,
+                        isNullable: true
                     },
                     {
                         name: 'heroName',
                         type: 'varchar',
-                        isNullable: false,
+                        isNullable: true
                     },
                     {
                         name: 'pictureHero',
                         type: 'varchar',
+                        isNullable: true
                     },
                     {
                         name: 'descriptionHero',
                         type: 'varchar',
+                        isNullable: true
                     },
                     {
                         name: 'atkHero',
                         type: 'int',
+                        isNullable: true
                     },
                     {
                         name: 'defHero',
                         type: 'int',
+                        isNullable: true
                     }
                 ]
             })
