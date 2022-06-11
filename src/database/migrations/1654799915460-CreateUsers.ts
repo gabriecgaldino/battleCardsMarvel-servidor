@@ -46,12 +46,14 @@ export default class CreateUsers1654799915460 implements MigrationInterface {
                         type: 'varchar',
                         isNullable: false,
                         isUnique: true,
+                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'id_cardCollection',
                         type: 'varchar',
                         isNullable: false,
                         isUnique: true,
+                        default: 'uuid_generate_v4()'
                     },
                     {
                         name: 'score',

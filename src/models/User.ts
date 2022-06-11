@@ -14,10 +14,10 @@ class Users {
     @Column()
     email: string
 
-    @Column('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id_Wallet: string
 
-    @Column('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id_cardCollection: string
 
     @Column()

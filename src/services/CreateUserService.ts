@@ -4,12 +4,9 @@ import User from "../models/User";
 import UsersRepository from "../repositories/UsersRepository";
 
 interface Request {
-    id: string
     name: string
-    age: Date
+    age: string
     email: string
-    id_Wallet: string
-    id_cardCollection: string
     score: Number
     username: string
     password: string 
@@ -17,12 +14,9 @@ interface Request {
 
 class CreateUserService {
     public async execute({
-        id,
         name,
         age,
         email,
-        id_Wallet,
-        id_cardCollection,
         score,
         username,
         password, 
@@ -30,12 +24,9 @@ class CreateUserService {
         const userRepository = getCustomRepository(UsersRepository)
 
         const user = userRepository.create({
-            id,
             name,
             age,
             email,
-            id_Wallet,
-            id_cardCollection,
             score,
             username,
             password,

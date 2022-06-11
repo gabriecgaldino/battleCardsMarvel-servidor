@@ -16,12 +16,9 @@ usersRouter.post('/', async(request, response)=> {
     try {
         const 
         { 
-            id,
             name,
             age,
             email,
-            id_Wallet,
-            id_cardCollection,
             score,
             username,
             password,
@@ -30,12 +27,9 @@ usersRouter.post('/', async(request, response)=> {
         const createUser = new CreateUserService()
 
         const user = await createUser.execute({
-            id,
             name,
             age,
             email,
-            id_Wallet,
-            id_cardCollection,
             score,
             username,
             password,
