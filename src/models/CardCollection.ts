@@ -6,7 +6,7 @@ class CardCollection {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @PrimaryGeneratedColumn('uuid')
+    @Column('uuid')
     id_card: string
 
     @Column()

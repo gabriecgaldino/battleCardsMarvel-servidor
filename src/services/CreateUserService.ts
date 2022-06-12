@@ -11,8 +11,8 @@ interface Request {
     score: Number
     username: string
     password: string  
-    id_Wallet: any,
-    id_cardCollection: any
+    id_Wallet: string,
+    id_cardCollection: string
 }
 class CreateUserService {
     public async execute({

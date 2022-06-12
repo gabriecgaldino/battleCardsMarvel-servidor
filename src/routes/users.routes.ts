@@ -1,14 +1,13 @@
 import { Router } from "express";
 import { getCustomRepository } from "typeorm";
+
 import CardCollectionRepository from "../repositories/CardCollectionRepository";
 import WalletRepository from "../repositories/WalletRepository";
-
 import CreateUserService from "../services/CreateUserService";
-
 
 const usersRouter = Router()
 
-usersRouter.post('/', async(request, response)=> {
+usersRouter.post('/', async (request, response)=> {
     try {
         const 
         { 
@@ -49,5 +48,7 @@ usersRouter.post('/', async(request, response)=> {
         return response.status(400).json({ error: err})
     }
 })
+
+
 
 export default usersRouter
