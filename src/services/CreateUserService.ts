@@ -1,7 +1,8 @@
-import { getCustomRepository } from "typeorm";
+import { hash } from "bcryptjs";
+import { getRepository } from "typeorm";
 
 import User from "../models/User";
-import UsersRepository from "../repositories/UsersRepository";
+
 
 interface Request {
     name: string
@@ -9,9 +10,10 @@ interface Request {
     email: string
     score: Number
     username: string
-    password: string 
+    password: string  
+    id_Wallet: any,
+    id_cardCollection: any
 }
-
 class CreateUserService {
     public async execute({
         name,
@@ -19,22 +21,39 @@ class CreateUserService {
         email,
         score,
         username,
-        password, 
+        password,
+        id_Wallet,
+        id_cardCollection
     }: Request): Promise<User> {
-        const userRepository = getCustomRepository(UsersRepository)
 
-        const user = userRepository.create({
-            name,
+        const usersRepository = getRepository(User)
+        const checkUsernameExists = await usersRepository.find({
+            where: { username, email, name },
+        })
+
+        /** A Validação está retornando verdadeiro, avaliar
+        * if(checkUsernameExists) {
+        *    throw new Error ('Usuário já cadastrado!')
+        *
+        * }
+        */  
+
+        const hashedPass = await hash(password, 8)
+
+        const user = usersRepository.create({
+            name, 
             age,
             email,
             score,
             username,
-            password,
+            password: hashedPass,
+            id_Wallet,
+            id_cardCollection,
         })
-        await userRepository.save(user)
+
+        await usersRepository.save(user)
 
         return user
     }
 }
-
 export default CreateUserService

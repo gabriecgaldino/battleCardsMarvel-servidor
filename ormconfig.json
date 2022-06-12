@@ -6,6 +6,7 @@
     "password": "docker",
     "database": "marvel_app",
     "entities": [ "./src/models/*.ts"],
+    
     "migrations": ["./src/database/migrations/*.ts"],
     "cli": {
         "migrationsDir": ["./src/database/migrations/"]

@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { getCustomRepository } from "typeorm";
+import CardCollectionRepository from "../repositories/CardCollectionRepository";
+import WalletRepository from "../repositories/WalletRepository";
 
-import UsersRepository from "../repositories/UsersRepository";
 import CreateUserService from "../services/CreateUserService";
 
 
@@ -14,10 +15,19 @@ usersRouter.post('/', async(request, response)=> {
             name,
             age,
             email,
-            score,
             username,
             password,
         } = request.body
+        
+        const createWallet = getCustomRepository(WalletRepository)
+        const wallet = createWallet.create({
+            coins: 0
+        })
+        await createWallet.save(wallet)
+
+        const createCollection = getCustomRepository(CardCollectionRepository)
+        const collection = createCollection.create({})
+        await createCollection.save(collection)
 
 
         const createUser = new CreateUserService()
@@ -25,10 +35,14 @@ usersRouter.post('/', async(request, response)=> {
             name,
             age,
             email,
-            score,
+            score: 0,
             username,
             password,
+            id_Wallet: wallet.id,
+            id_cardCollection: collection.id
         })
+
+        delete user.password
 
         return response.json(user)
     } catch (err) {

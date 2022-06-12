@@ -19,14 +19,14 @@ class Users {
     email: string
 
     @PrimaryGeneratedColumn('uuid')
-    id_Wallet: string
+    id_Wallet: any
 
     @OneToOne(()=> Wallet)
     @JoinColumn({ name: 'id_Wallet'})
     wallet: Wallet
 
     @PrimaryGeneratedColumn('uuid')
-    id_cardCollection: string
+    id_cardCollection: any
 
     @OneToOne(()=> CardCollection)
     @JoinColumn({ name: 'id_cardCollection'})
